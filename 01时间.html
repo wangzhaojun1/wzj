@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{width: 300px;height: 50px;border: 1px solid #ccc;margin: 20px 30px;line-height: 50px;color: #f00;text-align: center;}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+	<script type="text/javascript">
+		
+		showTime();
+		function showTime(){
+			var now = new Date();
+			var year = now.getFullYear();
+			var month = now.getMonth()+1;
+			var day= now.getDate();
+			var hour = now.getHours();
+			var min = now.getMinutes();
+			var sec = now.getSeconds();
+			if(hour<10){
+				hour = "0" + hour;
+			}
+			if(min<10){
+				min = "0" + min;
+			}
+			if(sec<10){
+				sec = "0" + sec;
+			}
+			
+			var time = year + "年" + month + "月" + day + "日" + hour + "时" + min + "分" + sec + "秒";
+			document.getElementById("box").innerHTML = time;
+		}
+		setInterval(showTime,1000);
+	</script>
+</html>

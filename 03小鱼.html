@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			
+			.box{
+				width: 500px;
+				height: 400px;
+				background: url(img/background.jpg);
+				background-size: cover;
+				margin: 100px;
+				position: relative;
+			}
+			
+			.box #fish{
+				position: absolute;
+				left: 200px;
+				top: 160px;
+				width: 70px;
+				height: 55px;
+			}
+			.box #fish img{
+				position: absolute;
+			}
+			.box #fish #body{
+				left: 0;
+				top: 0;
+			}
+			.box #fish #tail{
+				left: 38px;
+				top: 5px;
+			}
+			.box #fish #eye{
+				left: 18px;
+				top: 20px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div id="fish">
+				<img src="img/big.png" id="body"/>
+				<img src="img/bigTail0.png" id="tail"/>
+				<img src="img/bigEye0.png" id="eye"/>
+			</div>
+		</div>
+		
+	</body>
+	<script type="text/javascript">
+		var tail = document.getElementById("tail");
+		var eye = document.getElementById("eye");
+		var box = document.getElementsByClassName("box")[0];
+		var fish = document.getElementById("fish");
+		
+		var i = 0;
+		function changeTail(){
+			i++;
+			tail.src = "img/bigTail"+i+".png";
+			if(i === 7){
+				i = 0;
+			}
+		}
+		
+		setInterval(changeTail,100);
+		
+		function changeEye(){
+			eye.src = "img/bigEye1.png";
+			setTimeout(function(){
+				eye.src = "img/bigEye0.png";
+			},200);
+		}
+		
+		setInterval(changeEye,3000);
+		
+		box.onmousemove = function(event){
+			var x = event.pageX - this.offsetLeft;
+			var y = event.pageY - this.offsetTop;
+			fish.style.left = x + "px";
+			fish.style.top = y + "px";
+		}
+	</script>
+</html>

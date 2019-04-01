@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0px;
+				margin: 0px;
+			}
+			#box{
+				width: 600px;
+				height: 600px;
+				background: url(images/clockface.jpg) no-repeat;
+				margin: 0px auto;
+				position: relative;
+			}
+			#box li{
+				list-style: none;
+				width: 30px;
+				height: 600px;
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+			#box #hour{background: url(images/hourhand.png) no-repeat;}
+			#box #min{background: url(images/minhand.png) no-repeat;}
+			#box #sec{background: url(images/sechand.png) no-repeat;}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul>
+				<li id="hour"></li>
+				<li id="min"></li>
+				<li id="sec"></li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			showTime();
+			function showTime(){
+				var now = new Date();
+				var hour = now.getHours();
+				var min = now.getMinutes();
+				var sec = now.getSeconds();
+				var hourChange = hour*30 + min/2;
+				var minChange = min*6; 
+				var secChange = sec*6; 
+				document.getElementById('hour').style.transform = 'translateX(-50%) rotate('+ hourChange +'deg)';
+				document.getElementById('min').style.transform = 'translateX(-50%) rotate('+ minChange +'deg)';
+				document.getElementById('sec').style.transform = 'translateX(-50%) rotate('+ secChange +'deg)';
+			}
+			setInterval(showTime,1000);
+		</script>
+	</body>
+</html>
